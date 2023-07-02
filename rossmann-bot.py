@@ -14,7 +14,7 @@ TOKEN = '6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8'
 #https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/getUpdates
 #
 ## Webhook
-#https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/setWebhook?url=https://bot-telegram-rossmann-p20y.onrender.com
+#https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/setWebhook?url=https://bot-telegram-rossmann-cvdc.onrender.com
 #
 ## send message
 #https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/sendMessage?chat_id=5906683343&text=Hi Aroldo, tudo bem com você!
@@ -117,6 +117,8 @@ def index():
 
     else:
         return '<h1> Rossmann Telegram BOT </h1>'
+    
+    return None
 
 if __name__ == '__main__':
      port = os.environ.get('PORT', 5000)
