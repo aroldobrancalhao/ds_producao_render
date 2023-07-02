@@ -1,9 +1,9 @@
-import pandas as pd
+import os
 import json
 import requests
-import os
+import pandas as pd
 
-from flask import Flask, Response, request
+from flask import Flask, request, Response
 
 TOKEN = '6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8'
 
@@ -68,7 +68,7 @@ def predict( data ):
 
 def parse_message( message ):
     chat_id = message['message']['chat']['id']
-    store_id = message['mesage']['text']
+    store_id = message['message']['text']
 
     store_id = store_id.replace( '/', '' )
 
@@ -85,9 +85,9 @@ app = Flask(__name__)
 
 @app.route( '/', methods=['GET', 'POST'] )
 def index():
-    if requests.method =='POST':
-        message = requests.get_json()
-
+    if request.method == 'POST':
+        message = request.get_json()
+    
         chat_id, store_id = parse_message( message )
 
         if store_id != 'error':
