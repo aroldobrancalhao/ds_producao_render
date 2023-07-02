@@ -13,10 +13,7 @@ TOKEN = '6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8'
 #https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/getUpdates
 #
 ## Webhook
-#https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/setWebhook?url=
-
-## Webhook
-#https://api.telegram.org/bot6007107169:AAEfibx38xpRUW5EP6M90HPFbgCsYURXKGU/setWebhook?url=https://bot-telegram-rossmann-p20y.onrender.com
+#https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/setWebhook?url=https://bot-telegram-rossmann-p20y.onrender.com
 #
 ## send message
 #https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/sendMessage?chat_id=5906683343&text=Hi Aroldo, tudo bem com você!
@@ -35,8 +32,8 @@ def send_message( chat_id, text ):
 
 def load_dataset( store_id ):
     # loading test dataset
-    df10 = pd.read_csv( '/Users/arold/anaconda3/envs/datascienceemproducao/data_science_producao/data/test.csv' )
-    df_store_raw = pd.read_csv( '/Users/arold/anaconda3/envs/datascienceemproducao/data_science_producao/data/store.csv' )
+    df10 = pd.read_csv( 'test.csv' )
+    df_store_raw = pd.read_csv( 'store.csv' )
 
 
     # merge test dataset + store
