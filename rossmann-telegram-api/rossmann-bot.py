@@ -1,8 +1,9 @@
 import pandas as pd
 import json
 import requests
+import os
 
-from flask import Flask, Response
+from flask import Flask, Response, request
 
 TOKEN = '6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8'
 
@@ -18,7 +19,6 @@ TOKEN = '6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8'
 ## send message
 #https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/sendMessage?chat_id=5906683343&text=Hi Aroldo, tudo bem com você!
 
-
 def send_message( chat_id, text ):
     url = 'https://api.telegram.org/bot{}/'.format( TOKEN )
     url = url + 'sendMessage?chat_id={}'.format( chat_id )
@@ -27,14 +27,11 @@ def send_message( chat_id, text ):
     print('Status code {}'. format( r.status_code ))
     
     return None
-    
-
 
 def load_dataset( store_id ):
     # loading test dataset
     df10 = pd.read_csv( 'test.csv' )
     df_store_raw = pd.read_csv( 'store.csv' )
-
 
     # merge test dataset + store
     df_test = pd.merge( df10, df_store_raw, how='left', on='Store' )
@@ -64,6 +61,7 @@ def predict( data ):
     r = requests.post( url, data=data, headers=header )
     print( 'Status Code {}'.format( r.status_code ) )
 
+    # convertendo para um dataframe
     d1 = pd.DataFrame( r.json(), columns=r.json()[0].keys() )
 
     return d1
@@ -78,10 +76,9 @@ def parse_message( message ):
         store_id = int( store_id )
 
     except ValueError:
-        
         store_id = 'error'
 
-    return cha_id, store_id
+    return chat_id, store_id
 
 # API inicialize
 app = Flask(__name__)
@@ -116,11 +113,12 @@ def index():
 
         else:
             send_message( chat_id, 'Store ID is Wrong' )
-            return Response( 'ok', status=200 )
+            #return Response( 'ok', status=200 )
 
     else:
         return '<h1> Rossmann Telegram BOT </h1>'
 
-if __name__ == '__main':
-    app.run( host='0.0.0.0', port=5000 )
+if __name__ == '__main__':
+     port = os.environ.get('PORT', 5000)
+     app.run( host='0.0.0.0', port=port )
 
