@@ -16,7 +16,7 @@ TOKEN = '6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8'
 #https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/setWebhook?url=
 
 ## Webhook
-#https://api.telegram.org/bot6007107169:AAEfibx38xpRUW5EP6M90HPFbgCsYURXKGU/setWebhook?url=https://previsao-vendas-rossmann-adaw.onrender.com/rossmann/predict
+#https://api.telegram.org/bot6007107169:AAEfibx38xpRUW5EP6M90HPFbgCsYURXKGU/setWebhook?url=https://bot-telegram-rossmann-p20y.onrender.com
 #
 ## send message
 #https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/sendMessage?chat_id=5906683343&text=Hi Aroldo, tudo bem com você!
