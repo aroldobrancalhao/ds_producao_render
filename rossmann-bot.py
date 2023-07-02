@@ -85,9 +85,9 @@ app = Flask(__name__)
 
 @app.route( '/', methods=['GET', 'POST'] )
 def index():
-    if request.method =='POST':
-        message = requests.get_json()
-
+    if request.method == 'POST':
+        message = request.get_json()
+    
         chat_id, store_id = parse_message( message )
 
         if store_id != 'error':
