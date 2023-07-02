@@ -1,9 +1,9 @@
-import pandas as pd
+import os
 import json
 import requests
-import os
+import pandas as pd
 
-from flask import Flask, Response, request
+from flask import Flask, request, Response
 
 TOKEN = '6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8'
 
@@ -118,7 +118,7 @@ def index():
     else:
         return '<h1> Rossmann Telegram BOT </h1>'
 
-if __name__ == '__main':
+if __name__ == '__main__':
      port = os.environ.get('PORT', 5000)
      app.run( host='0.0.0.0', port=port )
 
