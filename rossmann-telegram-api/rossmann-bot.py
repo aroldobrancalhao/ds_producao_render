@@ -85,7 +85,6 @@ app = Flask(__name__)
 
 @app.route( '/', methods=['GET', 'POST'] )
 def index():
-        print('olá mundo')
     #if request.method == 'POST':
     #    message = request.get_json()
     #
@@ -117,9 +116,9 @@ def index():
     #        #return Response( 'ok', status=200 )
 #
     #else:
-        return '<h1> Rossmann Telegram BOT </h1>'
-    
-    return None
+    #    return '<h1> Rossmann Telegram BOT </h1>'
+    #
+    return 'Olá mundo!'
 
 if __name__ == '__main__':
      port = os.environ.get('PORT', 5000)
