@@ -113,13 +113,11 @@ def index():
 
         else:
             send_message( chat_id, 'Store ID is Wrong' )
-            #return Response( 'ok', status=200 )
+            return Response( 'ok', status=200 )
 
     else:
         return '<h1> Rossmann Telegram BOT </h1>'
     
-    return None
-
 if __name__ == '__main__':
      port = os.environ.get('PORT', 5000)
      app.run( host='0.0.0.0', port=port )
