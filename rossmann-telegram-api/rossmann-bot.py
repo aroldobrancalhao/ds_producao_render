@@ -14,7 +14,7 @@ TOKEN = '6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8'
 #https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/getUpdates
 #
 ## Webhook
-#https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/setWebhook?url=https://bot-telegram-rossmann-p20y.onrender.com
+#https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/setWebhook?url=https://bot-telegram-rossmann-cvdc.onrender.com
 #
 ## send message
 #https://api.telegram.org/bot6334256984:AAFvi8mr6ogIgyiRxp8vUIRLBxmN0KGB2P8/sendMessage?chat_id=5906683343&text=Hi Aroldo, tudo bem com você!
@@ -85,38 +85,41 @@ app = Flask(__name__)
 
 @app.route( '/', methods=['GET', 'POST'] )
 def index():
-    if request.method == 'POST':
-        message = request.get_json()
-    
-        chat_id, store_id = parse_message( message )
-
-        if store_id != 'error':
-            #load data
-            data = load_dataset( store_id )
-
-            if data != 'error':
-                #prediction
-                d1 = predict( data )
-
-                # calculation
-                d2 = d1[['store', 'prediction']].groupby( 'store' ).sum().reset_index()
-
-                #send message             
-                msg = 'Store Number {} will sell R${:,.2f} in the next 6 weeks'.format( d2['store'].values[0], d2['prediction'].values[0] ) 
-
-                send_message ( chat_id, msg )
-                return Response( 'Ok', status=200 )
-                
-            else:
-                send_message( chat_id, 'Store Not Available' )
-                return Response( 'Ok', status=200 )
-
-        else:
-            send_message( chat_id, 'Store ID is Wrong' )
-            #return Response( 'ok', status=200 )
-
-    else:
+        print('olá mundo')
+    #if request.method == 'POST':
+    #    message = request.get_json()
+    #
+    #    chat_id, store_id = parse_message( message )
+#
+    #    if store_id != 'error':
+    #        #load data
+    #        data = load_dataset( store_id )
+#
+    #        if data != 'error':
+    #            #prediction
+    #            d1 = predict( data )
+#
+    #            # calculation
+    #            d2 = d1[['store', 'prediction']].groupby( 'store' ).sum().reset_index()
+#
+    #            #send message             
+    #            msg = 'Store Number {} will sell R${:,.2f} in the next 6 weeks'.format( d2['store'].values[0], d2['prediction'].values[0] ) 
+#
+    #            send_message ( chat_id, msg )
+    #            return Response( 'Ok', status=200 )
+    #            
+    #        else:
+    #            send_message( chat_id, 'Store Not Available' )
+    #            return Response( 'Ok', status=200 )
+#
+    #    else:
+    #        send_message( chat_id, 'Store ID is Wrong' )
+    #        #return Response( 'ok', status=200 )
+#
+    #else:
         return '<h1> Rossmann Telegram BOT </h1>'
+    
+    return None
 
 if __name__ == '__main__':
      port = os.environ.get('PORT', 5000)
